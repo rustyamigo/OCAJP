@@ -1,0 +1,45 @@
+
+4.3 Array
+
+4.3.1 What is an array?
+
+An array is an object that stores a collection of values. It stores references to the data it stores. 
+
+Arrays can store two types of data:
+1. A collection of primitive data types
+2. A collection of objects 
+
+An array of primitive values stores primitive values themselves.
+An array of objects stores a collection of values, which are in fact heap-memory addresses or pointers.
+
+Ex: - ArrayEx01
+
+In Java, one can define one-dimensional and multidimensional arrays. 
+A one-dimensional array is an object that refers to a collection of scalar values.
+A two-dimensional (or more) array is referred to as multidimensional array. 
+A two dimensional array refers to a collection of objects in which each of the objects is a one-dimensional array. Similary a three dimensional array refers to a collection of two-dimensional arrays, and so on.
+NOTE: a two dimensional arrays may or may not contain the same number of elements.
+
+Creating an array involves three steps 
+1. Declaring an array
+2. Allocating the array
+3. Initializing the array elements.
+
+4.3.2. Array Declaration
+
+
+[9.4] Declare and use an ArrayList of a given type.
+---------------------------------------------------
+ArrayList is one of the most widely used classes from the Collections framework. It offers the best combination of features offered by an array and the List data structures.
+The most commonly used operations with a list are : 
+1. add items to a list
+2. modify items in a list
+3. delete items from a list
+4. & iterate over the items.
+
+An ArrayList can be compared with a resizable array.
+
+
+
+
+
