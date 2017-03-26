@@ -1,0 +1,132 @@
+Handling Exceptions:
+- Differentiate among checked exceptions, unchecked exceptions, and Errors
+ ☐ A program can fail for any reason some of the possibilities
+  1. You want to read a file but given wrong filename.
+  2. The program tries to connect to Internet but there is no connectivity.
+  3. One method call another method with a value that the method doesn't support.
+
+The Role of Exceptions: 
+  ☐ An exception is Java way of saying "I give up. I don't know what to do right now. You deal with it!"
+
+  ☐ As an example consider Java as a Person who is driving a Car. 
+   - A clear road trip is the one in which the program ends nicely. 
+   - Not every Person who is driving the car will have the same experience some might get a flattened tyre. Luckily a stepney is available and person is able to change it and continue with the road trip.
+  - Unfortunately the tyres get flattened again and this time the Person has to call a mechanic who can help him with getting another spare tire or repair the exisiting one. Then the rest of the road trip can be enjoyed successfully.
+
+  ☐ There are two approaches Java uses when dealing with exception. 
+  - 1. A method can handle the exception case itself or
+  - 2. make it the callers responsibility
+ 
+  As we saw in the above example of person driving a car for a road trip.
+
+  Another example would be suppose you have gone to a multiplex for watching a movie suddenly there is a power cut. This situation is not in your hand to control so the show is cancelled. Alternatively, the multiplex authority has arranged for a power generator and restored the power so the shows can run like normally. 
+
+
+Understanding Exception Types: 
+
+  ☐ An exception in an event that alters program flow. 
+  ☐ Java has a Throwable super class for all objects that represent these events.
+  ☐ Categories of exceptions
+  ☐ Error means something went so horribly wrong that your program should not attempt to recover from it. For example, the disk drive got crashed. These are abnormal conditions that you aren't likely to encouunter.
+  ☐ A runtime exception is defined as the RuntimeException class and its subclasses. Runtime exceptions tend to be unexpected but not necessarily fatal. For example accessing an invalid array index is unexpected. Runtime exceptions are also known as unchecked exceptions
+  ☐ Runtime exceptions and errors are collectively referred to as unchecked exceptions.
+  ☐ A checked exceptions includes Exception and all subclasses that do not extend RuntimeException. Checked exceptions tend to be more anticipated - for example trying to read a file that doesn't exist.
+  ☐ Java has a rule called the handle or declare rule for checked exceptions. For checked exceptions Java requires the code to either handle them or declare them in the method signatures.
+
+
+Types of Exceptions
+-----------------------------------------------------------------------------
+Types       How to recognize?     Okay for              Is program required 
+                                program to catch?      to handle or declare?
+
+-----------------------------------------------------------------------------
+Runtime      Subclass of             YES                    NO
+exception    RuntimeException
+----------------------------------------------------------------------------
+Checked      Subclass of Exception   YES                    YES
+exception    but not sub class of
+             RuntimeException
+----------------------------------------------------------------------------
+Error        Subclass of Error       NO                     NO
+----------------------------------------------------------------------------
+
+- Create a try-catch block and determine how exceptions alter normal program flow
+- Describe the advantages of Exception handling 
+
+Create and invoke a method that throws an exception:
+- Calling methods that throw exceptions
+
+ ☐ Syntactically you don't always need a combination of throw and throws statements to create a method that throws an exception (checked or unchecked). One can replace the throw statement with a method that throws an exception
+
+ ☐ Adding runtime exceptions or errors to a method declaration isn't required. A method can throw a runtime exception or error irrespective of whether its name is included in its throws clause.
+
+ ☐ A method can declare to throw all types of exceptions even if it doesn't do so. But a try block can't define a catch block for a checked exception (other than Exception) if the try block doesn't throw that checked exception or use a method that declares to throw that checked exception.
+
+
+Creating try-catch-finally block with a real life scenario
+Positioning of catch and finally blocks can't be interchanged.
+
+A guy promises to buy diamonds for his girlfriend and treat her to coffee. The girl inquires about what will happen if he meets with an exceptional condition during the diamond purchase, such as inadequate funds. To the girl's disappointment the boy replies that he'll still treat her to coffee.
+
+A few tragic incidents such as an earthquake or a tornado can cancel the treat similary there are few scenarios in java in which a finally block does not execute.
+
+Application Termination:
+  The try or catch block executes System.exit which immediately terminates the applicatiojn
+Fatal Errors:
+   A crash of the JVM or the OS occurs.
+
+ ☐ If both the catch and finally blocks define return statements, the calling method will receive a value from the finally block.
+ ☐ Control in the catch block copies the value of returnVal to be returned before it executes the finally block, so the returned value is not modified when finally executes.
+ ☐ If a catch block returns a primitive data type, the finally block can't modify the value being returned by it. If a catch block returns an object, the finally block can modify the state of the object being returned by it.
+
+Here are a few more rules you'll need to answer the questions in the OCA Java SE 8 Programmer I exam:
+
+  A try block may be followed by multiple catch blocks and the catch blocks may be followed by a single finally block.
+  A try block may be followed by either a catch or a finally block or both. But a finally block alone won't suffice if code in the try block throws a checked exceptions. In this case you need to catch checked exceptions or declare it to be thrown by your method. Otherwise, your code won't compile.
+  The try, catch, and finally blocks can't exist independently.
+  The finally block can't appear before catch block.
+  A finally block always executes, regardless of whether the code throws an exception.
+
+Can an exception can be rethrown?
+
+
+
+Recognize common exception classes (such as NullPointerException, ArithmeticException, ArrayIndexOutOfBoundsException, ClassCastException): 
+
+- Runtime Exceptions  
+ ☐ ArithmeticException
+ ☐ ArrayIndexOutOfBoundsException - is thrown when used with Array
+ ☐ IndexOutOfBoundsException - is thrown when used with ArrayList
+ ☐ ClassCastException
+ ☐ IllegalArgumentException
+ ☐ NullPointerException
+ ☐ NumberFormatException
+
+ From Superclass to subclass the chances of ClassCastException is high because there won't be any compile time checks.
+ But when  we try to use specific subclass type and cast it into other class which has also derived from the same super class we get an compiler error of inconvertible types.
+ The instanceof operator can be used here to check the compatible types before applying the casting.
+
+
+
+
+- Checked Excetpions
+ ☐ IOException
+ ☐ FileNotFoundException
+
+- Errors
+ ☐ ExceptionInIntializerError - ExceptionInInitializationError can be caused by an object of RuntimeException only. It can't occur as the result of an error or check exception thrown by the static initialization block.
+ ☐ StackOverflowError
+ ☐ NoClassDefFoundError
+
+
+For Integer.parseInt(String, int base); // will specify the base for that particular conversion of method.
+IllegalArgumentException <- NumberFormatException
+
+LinkageError <- ExceptionInInitializerError
+
+LinkageError <- NoClassDefFoundError
+
+VirtualMachineError <- OutOfMemoryError
+
+
+

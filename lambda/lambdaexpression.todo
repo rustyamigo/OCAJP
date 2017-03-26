@@ -1,0 +1,65 @@
+Write a simple Lambda expression that consumes a Lambda Predicate expression:
+
+What is functional programming: 
+ ☐ Functional programming is a paradigm which concentrates on computing results rather than on performing actions.  
+ ☐ That is, when you call a function, the only significant effect that the function has is usually to compute a value and return it.
+ ☐ Objects in a functional programming language are often immutable (a.k.a.const or final); instead of changing an object, you allocate a new object which looks like the old one except for the change.
+ ☐ Functional Programming uses 'Lambda Expressions' to write code. 
+
+Lambda Expression:
+ ☐ A lambda expression is a block of code that gets passed around. It can be thought of as an anonymous method that has a parameter and a body just like normal methods do, but it doesn't have a name like a real method.
+ ☐ In other words, a lambda expression is like a method that you can pass as if it were a variable. 
+
+Example:
+ ☐ TraditionalSearch 
+     Now, if we want to find all the team leaders we have to code the entire thing once again i.e. creating another interface and creating a class that implements that interface and a separate print method.
+     To overcome the above drawback we can use the lambda expression syntax
+ 
+ ☐ LambdaSearchUsingCheckEmployee 
+     With LamdaSearch we have to only add a single line and do the following change in the print method where we are going to pass the interface CheckEmployee (which is an functional interface)
+
+Lambda Syntax: 
+ ☐ One of the simplest lambda syntax we can write is the one we saw today
+    e -> e.isManager()
+    - This means that java should call a method with an Employee parameter that returns a boolean value that's the result of e.isManager() (it returns true or false based on employee who is manager or not).
+ 
+ ☐ Java replies on context when figuring out what lambda expression mean. The lambda is passed as the second parameter of the print() method which expects CheckEmployee as the second parameter. Since we are passing lambda instead, java tries to map our lambda to that interface: 
+    boolean test(Employee employee);  
+ 
+ ☐ Since the test method takes an Employee as a parameter, that means the lambda parameter has to be an Employee. And since that interface methods returns a boolean, we know the lambda returns a boolean.
+
+ ☐ The syntax of lambda is tricky as we know many parts are optional. These two lines do the exact same thing
+    
+    1 - e -> e.isManager()
+
+    Specify a single parameter with the name e
+    The arrow operator is to separate the parameter and body
+    A body that calls a single method and returns the result of that method.
+
+    2 - (Employee e) -> {return e.isManager();}
+    Specify a single parameter with the name e and stating the type is Employee
+    The arrow operator is to separate the parameter and body
+    A body that has one or more lines of code, including a semicolon and a return statement.
+ -Examples of Valid Lambdas
+   - print(() -> true);
+   - print((a,b) -> {return true;}); // parenthesis is mandatory for more than one parameter
+   - print(a -> true); // parenthesis is optional for single parameter
+   - print(a -> a.startsWith("khozema"));
+   - print((String a, String b) -> a.startsWith("khozema"));
+
+-Examples of Invalid Lambdas
+   - print(a,b -> {return true;}); // parenthesis is mandatory for more than one parameter so it won't compile
+   - print(a -> {true;}); // return is missing won't compile
+   - print(a -> {return true}); // ; is missing won't compile
+ 
+Predicates:
+
+  ☐ Lambdas work with interfaces that have only one method. These are called functional interfaces - interfaces that can be used with functional programming.
+  ☐ Java recognizes this common problem where we have to create lot of interfaces for testing different entities. It provides with an interface called as Predicate inside the java.util.function package
+    public interface Predicate<T> {
+      boolean test(T t);
+    }
+
+Example: 
+ ☐ LambdaSearchUsingPredicate 
+     With LamdaSearch we have to only add a single line and do the following change in the print method where we are going to pass the Predicate functional interface available in java.util.function.Predicate
