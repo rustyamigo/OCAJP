@@ -1,0 +1,21 @@
+Declare and use an ArrayList of a given type :
+- Introduction
+ ☐ The OCA Java SE 8 Programmer I exam covers only one class from the Java Collection API: ArrayList.
+ ☐ ArrayList is one of the most widely used classes from the collections framework.
+ ☐ The most commonly used operations with the list are 
+   - add items to a list, 
+   - modify items in a list, 
+   - delete items from a list, 
+   - & iterate over the items
+ ☐ An ArrayList can be compare with a resizable array. Once array is created we can't increase or decrease the size of an array. On the other hand, an ArrayList automatically increases or decreases in size as elements are added to or removed from it.
+ ☐ Also, unlike arrays we don't need to specify an initial size to create an ArrayList.
+ ☐ Few of the important properties of an ArrayList:
+     - It implements the interface list.
+     - It allows null values to be added to it.
+     - It implements all list operations (add, modify and delete values)
+     - It allows duplicate values to be added to it.
+     - It maintains its insertion order.
+     - You can use either Iterator or ListIterator to iterate over items of an ArrayList.
+     - It supports generics making it type safe.
+ Creating an ArrayList:
+     
